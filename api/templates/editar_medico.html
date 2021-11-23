@@ -1,0 +1,39 @@
+{% extends 'base.html' %}
+
+{% block title %}
+Criar médico
+{% endblock title %}
+
+{% block content %}
+<form method="post"> {% csrf_token %}
+
+    <div class="form-row">
+        <div class="form-group col-md-6">
+            <label>Nome do médico</label>
+            <input type="text" class="form-control" name="nome" placeholder="Nome do médico" value="{{ medico.nome }}">
+        </div>
+        <div class="form-group col-md-4">
+            <label>Data de nascimento</label>
+            <input type="date" class="form-control" name="data_nascimento" placeholder="Data de nascimento" value="{{ medico.data_nascimento }}">
+        </div>
+
+    </div>
+    <div class="form-row">
+        <div class="form-group col-md-4">
+            <label>CRM</label>
+            <input type="text" class="form-control" name="crm" placeholder="CRM" value="{{ medico.crm }}">
+        </div>
+        <div class="form-group col-md-6">
+            <label>Especialidade</label>
+            <select name="especialidade" class="form-control">
+                <option selected value="{{ medico.especialidade.id }} ">{{ medico.especialidade.nome }}</option>
+                {% for n in especialidades %}
+                <option value="{{ n.id }}">{{ n.nome }}</option>
+                {% endfor %}
+            </select>
+        </div>
+    </div>
+
+    <button type="submit" class="btn btn-primary">Atualizar</button>
+</form>
+{% endblock %}

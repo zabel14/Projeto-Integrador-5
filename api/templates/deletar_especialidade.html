@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+
+{% load static %}
+{% block title %}
+Deletar especialidade
+{% endblock title %}
+{% block content %}
+<h1>Deseja mesmo deletar essa especialidade?</h1>
+<br>
+<form method="post"> {% csrf_token %}
+    <button type="submit" class="btn btn-danger">
+        Deletar Especialidade
+    </button>
+</form>
+{% endblock %}
